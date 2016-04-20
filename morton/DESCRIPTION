@@ -1,0 +1,10 @@
+Package: morton
+Type: Package
+Title: Tools for manipulation of phylogenetic, genetic, and other biodiversity data
+Version: 0.5
+Date: 2016-04-20
+Author: Andrew L. Hipp
+Maintainer: Andrew L. Hipp <ahipp@mortonarb.org>
+Description: More about what it does (maybe more than one line)
+License: GPL-3
+Depends: ape, phytools, parallel
