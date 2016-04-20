@@ -1,72 +1,71 @@
 \name{add.data.to.tips}
 \alias{add.data.to.tips}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Adds data to the tip labels of a tree using a standard formula
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function is useful for adding data from one or more columns of a matrix to the tip labels of a tree
 }
 \usage{
-add.data.to.tips(tr, datMat, delim = "[_|]", returnNum = 1:2, returnDelim = "_", addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE, ...)
+add.data.to.tips(tr, datMat, delim = "[_|]", returnNum = 1:2, returnDelim = "_",
+addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tr}{
-%%     ~~Describe \code{tr} here~~
+    A \code{phylo} object
 }
   \item{datMat}{
-%%     ~~Describe \code{datMat} here~~
+    A matrix with row names equal to the tips you want to match in the tree, after passing
+    the tip labels through \link{label.elements}, and columns you want to add indicated
+    using \code{addCols}
 }
   \item{delim}{
-%%     ~~Describe \code{delim} here~~
+    Delimiter for elements of the tip labels in the tree passed to the function, which
+    will be used by \link{label.elements} to split the tip labels
 }
   \item{returnNum}{
-%%     ~~Describe \code{returnNum} here~~
+    The delimited elements of the tree tip labels that you want back from \link{label.elements}
 }
   \item{returnDelim}{
-%%     ~~Describe \code{returnDelim} here~~
+    The delimiter to use in rebuilding the tip labels in \link{label.elements}
 }
   \item{addCols}{
-%%     ~~Describe \code{addCols} here~~
+    Which columns of \code{datMat} to add to the new tip labels
 }
   \item{uniques}{
-%%     ~~Describe \code{uniques} here~~
+    A boolean: if \code{TRUE}, any duplicate tip labels after passing through \link{label.elements}
+    will be deleted
 }
   \item{addDelim}{
-%%     ~~Describe \code{addDelim} here~~
+    The delimiter to go between the tip label and the elements being added
 }
   \item{reorderTree}{
-%%     ~~Describe \code{reorderTree} here~~
+    A boolean: if \code{TRUE}, the tree will be reordered so that the tip labels are in the \code{plot.phylo}
+    order
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+    Additional arguments passed along to \link{label.elements}
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+  A list:
+    \item{tr.relabelled }{An object of class \code{phylo}, relabelled}
+    \item{labelMat }{An object of class \code{matrix} with original labels, the
+    tips matched, the new elements added, the new labels, and whether the
+    tip was retained or not}
 }
 \author{
-%%  ~~who you are~~
+  Andrew Hipp
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+  \code{\link{label.elements}}
+  \code{\link{color.tips.by.element}}
+  \code{\link{section.coloring}}
+  \code{\link{tidyName}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -74,33 +73,30 @@ add.data.to.tips(tr, datMat, delim = "[_|]", returnNum = 1:2, returnDelim = "_",
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (tr, datMat, delim = "[_|]", returnNum = 1:2, returnDelim = "_", 
-    addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE, 
-    ...) 
+function (tr, datMat, delim = "[_|]", returnNum = 1:2, returnDelim = "_",
+    addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE,
+    ...)
 {
-    if (reorderTree) 
+    if (reorderTree)
         tr <- read.tree(text = write.tree(tr))
-    tips.to.match <- label.elements(tr, delim, returnNum, returnDelim, 
+    tips.to.match <- label.elements(tr, delim, returnNum, returnDelim,
         ...)
-    if (uniques) 
+    if (uniques)
         tips.to.drop <- which(duplicated(tips.to.match))
-    addVect <- datMat[match(tips.to.match, row.names(datMat)), 
+    addVect <- datMat[match(tips.to.match, row.names(datMat)),
         addCols]
-    if (!is.null(dim(addVect))) 
+    if (!is.null(dim(addVect)))
         addVect <- apply(addVect, 1, paste, collapse = addDelim)
     oldNames <- tr$tip.label
     newLabel <- paste(oldNames, addVect, sep = addDelim)
     tr$tip.label <- newLabel
-    if (uniques) 
+    if (uniques)
         tr <- drop.tip(tr, tr$tip.label[tips.to.drop])
-    out = list(tr.relabelled = tr, labelMat = cbind(oldLabel = oldNames, 
-        tipMatched = tips.to.match, newElement = addVect, newLabel = newLabel, 
+    out = list(tr.relabelled = tr, labelMat = cbind(oldLabel = oldNames,
+        tipMatched = tips.to.match, newElement = addVect, newLabel = newLabel,
         retained = !duplicated(tips.to.match)))
     row.names(out$labelMat) <- out$labelMat[, "newLabel"]
     return(out)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{manip}
