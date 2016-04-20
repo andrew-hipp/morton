@@ -1,14 +1,14 @@
 \name{color.tips.by.element}
 \alias{color.tips.by.element}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+  Color the tip labels of a tree according to elements of the tip labels
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-color.tips.by.element(tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA", addLegend = T, colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1, dot.pch = 1, blank.tips = T, ...)
+color.tips.by.element(tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA", addLegend = T,
+colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1, dot.pch = 1, blank.tips = T, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -80,25 +80,25 @@ color.tips.by.element(tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA", 
-    addLegend = T, colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1, 
-    dot.pch = 1, blank.tips = T, ...) 
+function (tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA",
+    addLegend = T, colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1,
+    dot.pch = 1, blank.tips = T, ...)
 {
-    vectorToColorBy <- label.elements(tr, delim, returnNum = element, 
+    vectorToColorBy <- label.elements(tr, delim, returnNum = element,
         fixed = fixed)
     colors = colors()[as.factor(vectorToColorBy)]
     colors[vectorToColorBy \%in\% whiteOut] <- "white"
     par(mar = c(5, 10, 4, 2))
-    if (blank.tips) 
+    if (blank.tips)
         tr$tip.label <- sapply(tr$tip.label, function(x) "")
     a = plot(tr, ...)
-    if (colorIt) 
+    if (colorIt)
         tiplabels(col = colors, pch = dot.pch, cex = tip.cex)
-    if (byLabels) 
+    if (byLabels)
         tiplabels(vectorToColorBy, cex = tip.cex, align.tip.label = T)
-    if (addLegend) 
-        legend(a$x.lim[1] - abs(diff(a$x.lim)/4), a$y.lim[2], 
-            legend = unique(vectorToColorBy), pch = dot.pch, 
+    if (addLegend)
+        legend(a$x.lim[1] - abs(diff(a$x.lim)/4), a$y.lim[2],
+            legend = unique(vectorToColorBy), pch = dot.pch,
             cex = 1, col = unique(colors), bty = "n")
   }
 }

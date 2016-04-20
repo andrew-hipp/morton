@@ -1,6 +1,5 @@
 \name{label.elements}
 \alias{label.elements}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
 }
@@ -59,12 +58,12 @@ label.elements(x, delim = "|", returnNum = 1, returnDelim = " ", ...)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (x, delim = "|", returnNum = 1, returnDelim = " ", ...) 
+function (x, delim = "|", returnNum = 1, returnDelim = " ", ...)
 {
-    if ("phylo" \%in\% class(x)) 
+    if ("phylo" \%in\% class(x))
         labelVector <- x$tip.label
     else labelVector <- x
-    out <- sapply(labelVector, function(x) paste(strsplit(x, 
+    out <- sapply(labelVector, function(x) paste(strsplit(x,
         delim, ...)[[1]][returnNum], collapse = returnDelim))
     out
   }
