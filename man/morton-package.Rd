@@ -1,25 +1,25 @@
-\name{treeBuddy-package}
-\alias{treeBuddy-package}
-\alias{treeBuddy}
+\name{morton-package}
+\alias{morton-package}
+\alias{morton}
 \docType{package}
 \title{
-\packageTitle{treeBuddy}
+\packageTitle{morton}
 }
 \description{
-\packageDescription{treeBuddy}
+\packageDescription{morton}
 }
 \details{
 
 The DESCRIPTION file:
-\packageDESCRIPTION{treeBuddy}
-\packageIndices{treeBuddy}
+\packageDESCRIPTION{morton}
+\packageIndices{morton}
 ~~ An overview of how to use the package, including the most important ~~
 ~~ functions ~~
 }
 \author{
-\packageAuthor{treeBuddy}
+\packageAuthor{morton}
 
-Maintainer: \packageMaintainer{treeBuddy}
+Maintainer: \packageMaintainer{morton}
 }
 \references{
 ~~ Literature or other references for background information ~~

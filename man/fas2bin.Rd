@@ -55,7 +55,6 @@ fas2bin(infile, outfile, ...)
 ## The function is currently defined as
 function (infile, outfile, ...) 
 {
-    require(seqinr)
     in.bin <- make.binary(t(as.data.frame(read.fasta(infile, 
         seqtype = "AA", set.attributes = F))))
     out.seqs <- vector("list", dim(in.bin)[1])

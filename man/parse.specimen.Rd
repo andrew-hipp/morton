@@ -49,7 +49,6 @@ parse.specimen(ncbiDat)
 ## The function is currently defined as
 function (ncbiDat) 
 {
-    require(gdata)
     fields <- c("All collectors", "Primary collector last name", 
         "Collector number", "Collection", "Unedited text")
     obj <- ncbiDat[, "specimen_voucher"]

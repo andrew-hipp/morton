@@ -62,7 +62,6 @@ match.nodes(guideTree, otherTrees, matchBoots = T, plotBoots = T, ...)
 function (guideTree, otherTrees, matchBoots = T, plotBoots = T, 
     ...) 
 {
-    require(phytools)
     if ("phylo" \%in\% class(otherTrees)) 
         otherTrees = list(tr1 = otherTrees)
     matched <- lapply(otherTrees, function(x) matchNodes(guideTree, 

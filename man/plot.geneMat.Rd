@@ -92,7 +92,6 @@ function (x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5,
         "geneMat.plot.\%Y.\%m.\%d.\%H\%M.pdf"), pdfW = 10, pdfH = 10, 
     remove.tips = TRUE, ...) 
 {
-    require(ape)
     if (!is.na(pdfTitle)) 
         pdf(pdfTitle, pdfW, pdfH)
     x <- t(x)

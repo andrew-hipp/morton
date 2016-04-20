@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-make.shared.gene.matrix(dat = geneMat.2013.06.13, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\% c("orgs", "ncbiAcc", "numberOfOrgs", "numberOfAccessions", "numberOfSequences")])
+make.shared.gene.matrix(dat, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\% c("orgs", "ncbiAcc", "numberOfOrgs", "numberOfAccessions", "numberOfSequences")])
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -50,7 +50,7 @@ make.shared.gene.matrix(dat = geneMat.2013.06.13, loci = dimnames(dat)[[2]][!dim
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (dat = geneMat.2013.06.13, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\% 
+function (dat, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\% 
     c("orgs", "ncbiAcc", "numberOfOrgs", "numberOfAccessions", 
         "numberOfSequences")]) 
 {

@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-section.coloring(tr, tipChar = "-", tip.cex = 0.1, tiplty = 0, pdfTitle = paste("trial.", paste(sample(letters, 3), collapse = ""), ".pdf", sep = ""), dist.cats = disparity.categories, whiteOut = "NA", xy.multiplier = 1.5, offset.proportion = 0.03, writeLabels = 0.1, ...)
+section.coloring(tr, tipChar = "-", tip.cex = 0.1, tiplty = 0, pdfTitle = paste("trial.", paste(sample(letters, 3), collapse = ""), ".pdf", sep = ""), dist.cats = rep(1, length(tr$tip.label)), whiteOut = "NA", xy.multiplier = 1.5, offset.proportion = 0.03, writeLabels = 0.1, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -79,8 +79,9 @@ section.coloring(tr, tipChar = "-", tip.cex = 0.1, tiplty = 0, pdfTitle = paste(
 ## The function is currently defined as
 function (tr, tipChar = "-", tip.cex = 0.1, tiplty = 0, pdfTitle = paste("trial.", 
     paste(sample(letters, 3), collapse = ""), ".pdf", sep = ""), 
-    dist.cats = disparity.categories, whiteOut = "NA", xy.multiplier = 1.5, 
-    offset.proportion = 0.03, writeLabels = 0.1, ...) 
+    dist.cats = rep(1, length(tr$tip.label)), whiteOut = "NA", 
+    xy.multiplier = 1.5, offset.proportion = 0.03, writeLabels = 0.1, 
+    ...) 
 {
     tr <- read.tree(text = write.tree(tr))
     vectorToColorBy <- label.elements(tr, "|", returnNum = 6, 

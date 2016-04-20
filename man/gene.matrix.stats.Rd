@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-gene.matrix.stats(mat = geneMat.2013.06.13, outfile = paste("geneStats.", paste(sample(letters, 5), collapse = ""), ".txt", sep = ""))
+gene.matrix.stats(mat, outfile = paste("geneStats.", paste(sample(letters, 5), collapse = ""), ".txt", sep = ""))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -50,8 +50,8 @@ gene.matrix.stats(mat = geneMat.2013.06.13, outfile = paste("geneStats.", paste(
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (mat = geneMat.2013.06.13, outfile = paste("geneStats.", 
-    paste(sample(letters, 5), collapse = ""), ".txt", sep = "")) 
+function (mat, outfile = paste("geneStats.", paste(sample(letters, 
+    5), collapse = ""), ".txt", sep = "")) 
 {
     loci <- dimnames(mat)[[2]][!dimnames(mat)[[2]] \%in\% c("orgs", 
         "ncbiAcc", "numberOfOrgs", "numberOfAccessions", "numberOfSequences")]

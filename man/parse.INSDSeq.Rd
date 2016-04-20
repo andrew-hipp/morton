@@ -68,9 +68,6 @@ function (xml_file, do = NA, includeSeqs = F, cores = 1, parse.specimens = T,
 {
     if (cores > 1 & Sys.info()["sysname"] == "Windows") 
         warning("Multicore is only supported on mac and linux for right now")
-    require(ape)
-    require(XML)
-    require(parallel)
     nRecords <- length(xml_file$doc$children$INSDSet)
     columns <- c("NCBI_accession", "seq_length", "strandedness", 
         "moltype", "topology", "division", "update_date", "create_date", 

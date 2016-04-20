@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-make.fasta.files(geneMatrix = geneMat.2013.06.17, seqDat = cariceae.2013.02.28, genes = top12, outdir = paste("fasta.out.", paste(sample(letters, 5), collapse = ""), format(Sys.time(), "\%Y-\%m-\%d"), sep = ""), maxtax = 1, treat.multiples = c("discard", "takefirst"), batchfile = "muscle")
+make.fasta.files(geneMatrix, seqDat, genes, outdir = paste("fasta.out.", paste(sample(letters, 5), collapse = ""), format(Sys.time(), "\%Y-\%m-\%d"), sep = ""), maxtax = 1, treat.multiples = c("discard", "takefirst"), batchfile = "muscle")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -65,11 +65,10 @@ make.fasta.files(geneMatrix = geneMat.2013.06.17, seqDat = cariceae.2013.02.28, 
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (geneMatrix = geneMat.2013.06.17, seqDat = cariceae.2013.02.28, 
-    genes = top12, outdir = paste("fasta.out.", paste(sample(letters, 
-        5), collapse = ""), format(Sys.time(), "\%Y-\%m-\%d"), sep = ""), 
-    maxtax = 1, treat.multiples = c("discard", "takefirst"), 
-    batchfile = "muscle") 
+function (geneMatrix, seqDat, genes, outdir = paste("fasta.out.", 
+    paste(sample(letters, 5), collapse = ""), format(Sys.time(), 
+        "\%Y-\%m-\%d"), sep = ""), maxtax = 1, treat.multiples = c("discard", 
+    "takefirst"), batchfile = "muscle") 
 {
     if (!outdir \%in\% dir()) 
         dir.create(outdir)

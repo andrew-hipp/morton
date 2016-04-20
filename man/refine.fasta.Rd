@@ -49,8 +49,6 @@ refine.fasta(basedir = choose.dir())
 ## The function is currently defined as
 function (basedir = choose.dir()) 
 {
-    require(Biostrings)
-    require(ape)
     all.fasta <- sort(dir(basedir, full = T, patt = ".fas"))
     all.logs <- sort(dir(basedir, full = T, patt = "logfile"))
     files.out <- NULL

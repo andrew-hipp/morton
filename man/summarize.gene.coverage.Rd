@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-summarize.gene.coverage(datMat = cariceae.concat.4genes.summary, extra.left = 2, ...)
+summarize.gene.coverage(datMat, extra.left = 2, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -53,8 +53,7 @@ summarize.gene.coverage(datMat = cariceae.concat.4genes.summary, extra.left = 2,
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (datMat = cariceae.concat.4genes.summary, extra.left = 2, 
-    ...) 
+function (datMat, extra.left = 2, ...) 
 {
     genes.no = dim(datMat)[2]
     inds.no = dim(datMat)[1]
