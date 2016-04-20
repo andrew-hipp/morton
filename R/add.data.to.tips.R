@@ -1,5 +1,7 @@
 add.data.to.tips <-
-function(tr, datMat, delim = '[_|]', returnNum = 1:2, returnDelim = "_", addCols = c('GROUP'), uniques = F, addDelim = "|", reorderTree = TRUE, ...) {
+function(tr, datMat, delim = '[_|]',
+returnNum = 1:2, returnDelim = "_", addCols = c('GROUP'),
+uniques = F, addDelim = "|", reorderTree = TRUE, ...) {
 ## adds label to the end of the tips using a standard formula
 ## returns the relabelled tree and a matrix indicating what tip got what section
 ## arguments:

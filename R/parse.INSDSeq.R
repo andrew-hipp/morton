@@ -1,6 +1,6 @@
 parse.INSDSeq <-
 function(xml_file, do = NA, includeSeqs = F, cores = 1, parse.specimens = T,
-                         qualsToUse = c('specimen_voucher', 'country', 'collection_date', 'lat_lon', 'note', 'collected_by', 'isolate', 'pop_variant')) {
+         qualsToUse = c('specimen_voucher', 'country', 'collection_date', 'lat_lon', 'note', 'collected_by', 'isolate', 'pop_variant')) {
   if(cores > 1 & Sys.info()['sysname'] == 'Windows') warning("Multicore is only supported on mac and linux for right now")
   nRecords <- length(xml_file$doc$children$INSDSet)
   columns <- c('NCBI_accession', 'seq_length','strandedness','moltype','topology','division',

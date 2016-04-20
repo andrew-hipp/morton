@@ -1,5 +1,7 @@
 color.tips.by.element <-
-function(tr, element = 6, delim = "|", fixed = TRUE, whiteOut = 'NA', addLegend = T, colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1, dot.pch = 1, blank.tips = T, ...) {
+function(tr, element = 6, delim = "|", fixed = TRUE, whiteOut = 'NA',
+addLegend = T, colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1, dot.pch = 1,
+blank.tips = T, ...) {
   vectorToColorBy <- label.elements(tr, delim, returnNum = element, fixed = fixed)
   colors = colors()[as.factor(vectorToColorBy)]
   colors[vectorToColorBy %in% whiteOut] <- 'white'
