@@ -2,7 +2,6 @@ parse.specimen <-
 function(ncbiDat) {
 ## try to parse out the pieces of the specimen field
 ## ncbiDat is exported from parse.INSDSeq
-  require(gdata)
   fields <- c('All collectors', 'Primary collector last name', 'Collector number', 'Collection', 'Unedited text')
   obj <- ncbiDat[, 'specimen_voucher']
   ac <- pcln <- cn <- coll <- character(length(obj))

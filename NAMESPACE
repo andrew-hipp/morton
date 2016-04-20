@@ -1,1 +1,4 @@
 exportPattern("^[[:alpha:]]+")
+
+import(ape, phytools, parallel, XML, gdata, Biostrings)
+importFrom(seqinr, read.fasta, write.fasta)

@@ -1,5 +1,5 @@
 gene.matrix.stats <-
-function(mat = geneMat.2013.06.13, outfile = paste('geneStats.', paste(sample(letters, 5), collapse = ''), '.txt', sep = '')) {
+function(mat, outfile = paste('geneStats.', paste(sample(letters, 5), collapse = ''), '.txt', sep = '')) {
 ## describes the gene matrix
   loci <- dimnames(mat)[[2]][!dimnames(mat)[[2]] %in% c("orgs","ncbiAcc","numberOfOrgs","numberOfAccessions","numberOfSequences")]
   out <- file(outfile, open = 'a')

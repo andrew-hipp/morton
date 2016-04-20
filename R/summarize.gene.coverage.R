@@ -1,5 +1,5 @@
 summarize.gene.coverage <-
-function(datMat = cariceae.concat.4genes.summary, extra.left = 2, ...) {
+function(datMat, extra.left = 2, ...) {
   genes.no = dim(datMat)[2]
   inds.no = dim(datMat)[1]
   par(mar = c(5, 4 + extra.left, 4, 2) + 0.1)

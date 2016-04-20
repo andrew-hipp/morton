@@ -1,6 +1,8 @@
 plot.geneMat <-
-function(x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5,1,2), margins = c(0,1,0.5,0), geneColors = c('red', 'black'), minGenes = 10, sortByFreq = T, label.cex = 0.7, pdfTitle = format(Sys.time(), 'geneMat.plot.%Y.%m.%d.%H%M.pdf'), pdfW = 10, pdfH = 10, remove.tips = TRUE, ...) {
-  require(ape)
+function(x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5,1,2), margins = c(0,1,0.5,0),
+         geneColors = c('red', 'black'), minGenes = 10, sortByFreq = T, label.cex = 0.7,
+         pdfTitle = format(Sys.time(), 'geneMat.plot.%Y.%m.%d.%H%M.pdf'), pdfW = 10, pdfH = 10,
+         remove.tips = TRUE, ...) {
   if(!is.na(pdfTitle)) pdf(pdfTitle, pdfW, pdfH)
   x <- t(x) # puts genes as rows, inds as columns
   x <- x[genes, ]

@@ -1,5 +1,8 @@
 section.coloring <-
-function(tr, tipChar = '-', tip.cex = 0.1, tiplty = 0, pdfTitle = paste('trial.', paste(sample(letters,3), collapse = ''), '.pdf', sep = ''),  dist.cats = disparity.categories, whiteOut = 'NA', xy.multiplier = 1.5, offset.proportion = 0.03, writeLabels = 0.1, ...) {
+function(tr, tipChar = '-', tip.cex = 0.1, tiplty = 0,
+         pdfTitle = paste('trial.', paste(sample(letters,3), collapse = ''), '.pdf', sep = ''),
+         dist.cats = rep(1, length(tr$tip.label)), whiteOut = 'NA', xy.multiplier = 1.5, 
+         offset.proportion = 0.03, writeLabels = 0.1, ...) {
 ## trying to get concentric rings of coloring
   tr <- read.tree(text = write.tree(tr)) # orders labels in reading order
   vectorToColorBy <- label.elements(tr, "|", returnNum = 6, fixed = T)
@@ -12,7 +15,9 @@ function(tr, tipChar = '-', tip.cex = 0.1, tiplty = 0, pdfTitle = paste('trial.'
   a = plot(tr, 'fan', tip.color = colors, align.tip.label = tiplty, plot = FALSE, ...)
   offset.levels <- offset.levels * offset.proportion * abs(diff(a$x.lim))
   if(!is.na(pdfTitle)) pdf(pdfTitle)
-  a = plot(tr, 'fan', tip.color = colors, align.tip.label = tiplty, x.lim = a$x.lim * xy.multiplier, y.lim = a$y.lim * xy.multiplier, label.offset = offset.levels, ...)
+  a = plot(tr, 'fan', tip.color = colors, align.tip.label = tiplty,
+           x.lim = a$x.lim * xy.multiplier, y.lim = a$y.lim * xy.multiplier,
+           label.offset = offset.levels, ...)
   if(writeLabels > 0) {
     unique.sections <- unique(vectorToColorBy)
 

@@ -1,5 +1,5 @@
 make.fasta.files <-
-function(geneMatrix = geneMat.2013.06.17, seqDat = cariceae.2013.02.28, genes = top12, outdir = paste('fasta.out.', paste(sample(letters,5), collapse = ''), format(Sys.time(), "%Y-%m-%d"), sep = ''), maxtax = 1, treat.multiples = c('discard', 'takefirst'), batchfile = 'muscle') {
+function(geneMatrix, seqDat, genes, outdir = paste('fasta.out.', paste(sample(letters,5), collapse = ''), format(Sys.time(), "%Y-%m-%d"), sep = ''), maxtax = 1, treat.multiples = c('discard', 'takefirst'), batchfile = 'muscle') {
 ## makes fasta files for individuals having the genes indicated
 ## creates a log file with all individuals used for each gene
 ## arguments:

@@ -2,17 +2,12 @@ parse.INSDSeq <-
 function(xml_file, do = NA, includeSeqs = F, cores = 1, parse.specimens = T,
                          qualsToUse = c('specimen_voucher', 'country', 'collection_date', 'lat_lon', 'note', 'collected_by', 'isolate', 'pop_variant')) {
   if(cores > 1 & Sys.info()['sysname'] == 'Windows') warning("Multicore is only supported on mac and linux for right now")
-  require(ape)
-  require(XML)
-  require(parallel)
   nRecords <- length(xml_file$doc$children$INSDSet)
   columns <- c('NCBI_accession', 'seq_length','strandedness','moltype','topology','division',
                'update_date','create_date','definition','primary_accession','accession_version',
 			   ' otherseq_IDS','seq_source','organism','taxonomy','references','feature_table',
 			   'qualifiers1','generegion','Full_sequence', 'authors') ## not needed currently, but might be useful for making the code more flexible
-  #open(file('fails.v5.txt', open = 'a'))
   get.a.row <- function(recordNumber) {
-    #message(paste('doing record', recordNumber))
     dat <- xml_file$doc$children$INSDSet[[recordNumber]]
     featuresL <- length(dat[['INSDSeq_feature-table']][[1]][['INSDFeature_quals']])
 	featuresOut <- character(featuresL)

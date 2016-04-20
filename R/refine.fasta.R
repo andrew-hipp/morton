@@ -3,8 +3,6 @@ function(basedir = choose.dir()) {
 ## goes through the log files in a directory and makes changes according to these codes:
 ##  D = delete
 ##  RC = reverse and complement
-  require(Biostrings)
-  require(ape)
   all.fasta <- sort(dir(basedir, full = T, patt = '.fas'))
   all.logs <- sort(dir(basedir, full = T, patt = 'logfile'))
   files.out <- NULL

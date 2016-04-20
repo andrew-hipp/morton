@@ -1,5 +1,5 @@
 make.shared.gene.matrix <-
-function(dat = geneMat.2013.06.13, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] %in% c("orgs","ncbiAcc","numberOfOrgs","numberOfAccessions","numberOfSequences")]) {
+function(dat, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] %in% c("orgs","ncbiAcc","numberOfOrgs","numberOfAccessions","numberOfSequences")]) {
 ## takes output from make.gene.matrix
   out <- matrix(NA, length(loci), length(loci), dimnames = list(loci, loci))
   for(i in 1:length(loci)) {
