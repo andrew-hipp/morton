@@ -49,7 +49,6 @@ addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE, ...)
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
   A list:
@@ -68,35 +67,5 @@ addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE, ...)
   \code{\link{tidyName}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (tr, datMat, delim = "[_|]", returnNum = 1:2, returnDelim = "_",
-    addCols = c("GROUP"), uniques = F, addDelim = "|", reorderTree = TRUE,
-    ...)
-{
-    if (reorderTree)
-        tr <- read.tree(text = write.tree(tr))
-    tips.to.match <- label.elements(tr, delim, returnNum, returnDelim,
-        ...)
-    if (uniques)
-        tips.to.drop <- which(duplicated(tips.to.match))
-    addVect <- datMat[match(tips.to.match, row.names(datMat)),
-        addCols]
-    if (!is.null(dim(addVect)))
-        addVect <- apply(addVect, 1, paste, collapse = addDelim)
-    oldNames <- tr$tip.label
-    newLabel <- paste(oldNames, addVect, sep = addDelim)
-    tr$tip.label <- newLabel
-    if (uniques)
-        tr <- drop.tip(tr, tr$tip.label[tips.to.drop])
-    out = list(tr.relabelled = tr, labelMat = cbind(oldLabel = oldNames,
-        tipMatched = tips.to.match, newElement = addVect, newLabel = newLabel,
-        retained = !duplicated(tips.to.match)))
-    row.names(out$labelMat) <- out$labelMat[, "newLabel"]
-    return(out)
-  }
 }
 \keyword{manip}

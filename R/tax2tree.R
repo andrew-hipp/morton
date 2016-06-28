@@ -1,15 +1,6 @@
 ## make a tree from a taxonomic hierarchy
 ## ahipp@mortonarb.org, 2013-11-25
 
-example.tax <- function() {
-  require(ape)
-  tree = read.delim(file.choose(), as.is = TRUE)
-  trelease.tree <- tax2tree(tree)
-  plot(trelease.tree)
-  out <- dist.nodes.2(tree)
-  return(out)
-  }
-
 tax2tree <- function(taxonomy) {
   nEdge = dim(taxonomy)[1]
   ntips <- sum(taxonomy$tip)
