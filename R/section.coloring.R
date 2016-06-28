@@ -2,10 +2,11 @@ section.coloring <-
 function(tr, tipChar = '-', tip.cex = 0.1, tiplty = 0,
          pdfTitle = paste('trial.', paste(sample(letters,3), collapse = ''), '.pdf', sep = ''),
          dist.cats = rep(1, length(tr$tip.label)), whiteOut = 'NA', xy.multiplier = 1.5, 
-         offset.proportion = 0.03, writeLabels = 0.1, ...) {
+         offset.proportion = 0.03, writeLabels = 0.1, 
+		 vectorToColorBy = label.elements(tr, "|", returnNum = 6, fixed = T),
+		 ...) {
 ## trying to get concentric rings of coloring
   tr <- read.tree(text = write.tree(tr)) # orders labels in reading order
-  vectorToColorBy <- label.elements(tr, "|", returnNum = 6, fixed = T)
   #tr$tip.label <- vectorToColorBy
   colors <- colors()[as.factor(vectorToColorBy)]
   colors[vectorToColorBy %in% whiteOut] <- 'white'

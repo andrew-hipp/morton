@@ -4,7 +4,7 @@
   Color the tip labels of a tree according to elements of the tip labels
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Takes a tree with tip labels structured in a consistent manner, and colors according to unique elements
 }
 \usage{
 color.tips.by.element(tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA", addLegend = T,
@@ -13,96 +13,53 @@ colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1, dot.pch = 1, blank.tips = T, ..
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tr}{
-%%     ~~Describe \code{tr} here~~
+ a \code{phylo} object
 }
   \item{element}{
-%%     ~~Describe \code{element} here~~
+ which element of the delimited labels to use for coloring
 }
   \item{delim}{
-%%     ~~Describe \code{delim} here~~
+ label delimters
 }
   \item{fixed}{
-%%     ~~Describe \code{fixed} here~~
+ boolean: should \code{strsplit} use \code{fixed = TRUE} or not
 }
   \item{whiteOut}{
-%%     ~~Describe \code{whiteOut} here~~
+ a character vector identifying labels that should be whited out; defaults to \code{NA}
 }
   \item{addLegend}{
-%%     ~~Describe \code{addLegend} here~~
+ boolean
 }
   \item{colorIt}{
-%%     ~~Describe \code{colorIt} here~~
+ boolean: if \code{TRUE}, colored dots are added at the tips 
 }
   \item{byLabels}{
-%%     ~~Describe \code{byLabels} here~~
+ boolean: if \code{TRUE}, tip labels are reassigned the label element, and colored
 }
   \item{tip.cex}{
-%%     ~~Describe \code{tip.cex} here~~
+ \code{cex} for tip labels
 }
   \item{dot.pch}{
-%%     ~~Describe \code{dot.pch} here~~
+ character code for \code{colorIt} option
 }
   \item{blank.tips}{
-%%     ~~Describe \code{blank.tips} here~~
+ boolean: if \code{TRUE}, tip labels are not plotted
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+ additional arguments to \code{plot.phylo}
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The default assumes tips are pipe-delimited. If tips are species|country|subcountry|collectorNumber, for example, 
+use \code{element = 2} to color by country.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+the \code{plot.phylo} value, returned invisibly
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{section.coloring}}
+\code{\link{label.elements}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (tr, element = 6, delim = "|", fixed = TRUE, whiteOut = "NA",
-    addLegend = T, colorIt = FALSE, byLabels = TRUE, tip.cex = 0.1,
-    dot.pch = 1, blank.tips = T, ...)
-{
-    vectorToColorBy <- label.elements(tr, delim, returnNum = element,
-        fixed = fixed)
-    colors = colors()[as.factor(vectorToColorBy)]
-    colors[vectorToColorBy \%in\% whiteOut] <- "white"
-    par(mar = c(5, 10, 4, 2))
-    if (blank.tips)
-        tr$tip.label <- sapply(tr$tip.label, function(x) "")
-    a = plot(tr, ...)
-    if (colorIt)
-        tiplabels(col = colors, pch = dot.pch, cex = tip.cex)
-    if (byLabels)
-        tiplabels(vectorToColorBy, cex = tip.cex, align.tip.label = T)
-    if (addLegend)
-        legend(a$x.lim[1] - abs(diff(a$x.lim)/4), a$y.lim[2],
-            legend = unique(vectorToColorBy), pch = dot.pch,
-            cex = 1, col = unique(colors), bty = "n")
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
