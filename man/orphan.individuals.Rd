@@ -11,11 +11,11 @@ orphan.individuals(dat)
 }
 \arguments{
   \item{dat}{
-A matrix, the output of \code{\link{make.gene.matrix}}.
+A matrix, the output of \code{make.gene.matrix}.
 }
 }
 \details{
-Uses the function \code{\link{make.shared.gene.matrix}} internally.
+Uses the function \code{make.shared.gene.matrix} internally.
 All returned vectors are ordered to correspond with the rows of the gene matrix.
 }
 \value{

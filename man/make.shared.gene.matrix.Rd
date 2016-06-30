@@ -12,7 +12,7 @@ make.shared.gene.matrix(dat, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\
 }
 \arguments{
   \item{dat}{
-The output of \code{\link{make.gene.matrix}}, a matrix linking gene sequence, specimen voucher, and gene locus.
+The output of \code{make.gene.matrix}, a matrix linking gene sequence, specimen voucher, and gene locus.
 }
   \item{loci}{
 An optional vector of strings, the names of loci to include when counting shared specimens between pairs.

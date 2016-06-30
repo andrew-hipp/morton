@@ -31,7 +31,7 @@ delimited information.
 The delimitation character for the new tip labels generated.
 }
   \item{\dots}{
-Other arguments pertinent to the function \code{\link{strsplit}}.
+Other arguments pertinent to the function \code{strsplit}.
 }
 }
 \details{

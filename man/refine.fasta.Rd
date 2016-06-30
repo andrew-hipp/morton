@@ -4,7 +4,8 @@
 Clean Up FASTA Files to User Specification
 }
 \description{
-Reverse-complement or delete sequences in a multiple sequence alignment based on a csv file input.
+Reverse-complement or delete sequences in a multiple sequence alignment based 
+on a csv file input.
 }
 \usage{
 refine.fasta(basedir = choose.dir())
@@ -12,16 +13,17 @@ refine.fasta(basedir = choose.dir())
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{basedir}{
-The address of the directory which contains the FASTA files to be refined and corresponding log files.
+The address of the directory which contains the FASTA files to be refined and 
+corresponding log files.
 }
 }
 \details{
-\code{\link{make.fasta.files}} automates the export of FASTA and log files. 
+\code{make.fasta.files} automates the export of FASTA and log files. 
 A separate FASTA file and corresponding log file is exported for each
 locus included in the analysis.
 
 Any log files used in this function must match the format of those exported 
-by \code{\link{make.fasta.files}}.
+by \code{make.fasta.files}.
 Log files must be in csv format, and have the following columns:
   - orgs
   - seqLabels
@@ -46,7 +48,7 @@ Andrew Hipp and Kasey Pham
 }
 
 \seealso{
-%% \code{\link{make.gene.matrix}}, \code{\link{parse.INSDSeq}} ~~~
+ \code{\link{make.gene.matrix}}, \code{\link{parse.INSDSeq}}
 }
 
 \keyword{methods}

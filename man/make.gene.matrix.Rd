@@ -11,7 +11,7 @@ make.gene.matrix(metadata, locusCol = "cleanedGeneRegion", vouchersCol = "newLab
 }
 \arguments{
   \item{metadata}{
-The output of \code{\link{parse.INSDSeq}}, containing all parsed metadata and sequences from the raw XML data. Must contain a column for vouchers, which can be made with \code{\link{make.unique.vouchers.R}} and added to metadata data frame using \code{\link{cbind}}.
+The output of \code{parse.INSDSeq}, containing all parsed metadata and sequences from the raw XML data. Must contain a column for vouchers, which can be made with \code{make.unique.vouchers.R} and added to metadata data frame using \code{cbind}.
 }
   \item{locusCol}{
 An optional string, the name of the column in the metadata which contains the name of the gene region.
@@ -58,7 +58,7 @@ Andrew Hipp and Kasey Pham
 }
 
 \seealso{
-\code{\link{parse.INSDSeq}}, \code{\link{make.unique.vouchers}}, \code{\link{make.fasta.files}}, \code{\link{make.shared.gene.matrix}}
+\code{\link{parse.INSDSeq}}, \code{\link{make.unique.vouchers}}, \code{\link{make.fasta.files}}, \code{\link{make.shared.gene.matrix}}, \code{\link{cbind}}
 }
 \keyword{manip}
 \keyword{methods}

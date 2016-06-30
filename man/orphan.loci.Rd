@@ -4,7 +4,8 @@
 Identify Gene Loci Lacking Sequences.
 }
 \description{
-Identify all loci which do not have any gene sequences from the dataset associated with them.
+Identify all loci which do not have any gene sequences from the dataset 
+associated with them.
 }
 \usage{
 orphan.loci(x)
@@ -12,7 +13,7 @@ orphan.loci(x)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-The output of \code{\link{make.shared.gene.matrix}}.
+The output of \code{make.shared.gene.matrix}.
 }
 }
 \value{

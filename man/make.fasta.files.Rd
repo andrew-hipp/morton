@@ -17,10 +17,10 @@ function(geneMatrix, seqDat, genes,
 }
 \arguments{
   \item{geneMatrix}{
-The output from \code{\link{make.gene.matrix}}.  Connects vouchers with gene sequences and gene regions.
+The output from \code{make.gene.matrix}.  Connects vouchers with gene sequences and gene regions.
 }
   \item{seqDat}{
-The output of \code{\link{parse.INSDSeq}}.  A data frame where each row contains a sequence and its associated metadata.
+The output of \code{parse.INSDSeq}.  A data frame where each row contains a sequence and its associated metadata.
 }
   \item{genes}{
 A vector containing the names of all gene regions to be written, each to its own separate FASTA file.  Should correspond to names of columns of geneMatrix.
