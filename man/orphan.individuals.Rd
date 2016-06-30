@@ -1,11 +1,10 @@
 \name{orphan.individuals}
 \alias{orphan.individuals}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Identify Vouchers Lacking Sequences
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Determines which specimen vouchers do not have any sequences associated with them and which do.
 }
 \usage{
 orphan.individuals(dat)
@@ -13,33 +12,27 @@ orphan.individuals(dat)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dat}{
-%%     ~~Describe \code{dat} here~~
+A matrix, the output of \code{\link{make.gene.matrix}}.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Uses the function \code{\link{make.shared.gene.matrix}} internally.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{NCBI_accession}{A vector of all NCBI accession numbers}
+  \item{taxon}{Description of 'comp2'}
+  \item{orphans}{}
+  \item{notOrphans}{}
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{make.gene.matrix}}, \code{\link{make.shared.gene.matrix}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
