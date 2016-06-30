@@ -57,52 +57,6 @@ Kasey Pham and Andrew Hipp
 \seealso{
 \code{\link{make.gene.matrix}}, \code{\link{parse.INSDSeq}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (geneMatrix, seqDat, genes, outdir = paste("fasta.out.", 
-    paste(sample(letters, 5), collapse = ""), format(Sys.time(), 
-        "\%Y-\%m-\%d"), sep = ""), maxtax = 1, treat.multiples = c("discard", 
-    "takefirst"), batchfile = "muscle") 
-{
-    if (!outdir \%in\% dir()) 
-        dir.create(outdir)
-    geneMatrix <- geneMatrix[geneMatrix$numberOfOrgs <= maxtax, 
-        ]
-    geneMatrix$seqLabels <- tidyNames(paste(geneMatrix$orgs, 
-        row.names(geneMatrix)))
-    for (i in genes) {
-        out.log <- cbind(geneMatrix[geneMatrix[[i]] != "", c("orgs", 
-            "seqLabels", i)], whatToDo = "", comments = "")
-        multiples <- grep("|", out.log[, i], fixed = T)
-        if (treat.multiples[1] == "discard") {
-            if (length(multiples) != 0) 
-                out.log <- out.log[-multiples, ]
-        }
-        if (treat.multiples[1] == "takefirst") 
-            out.log[multiples, i] <- sapply(out.log[multiples, 
-                i], function(x) strsplit(x, "|", fixed = T)[[1]][1])
-        seqs <- seqDat$Full_sequence[match(out.log[, i], seqDat$NCBI_accession)]
-        writeLines(paste(">", out.log$seqLabels, "\n", seqs, 
-            sep = ""), paste(outdir, "/", i, format(Sys.time(), 
-            ".\%Y-\%m-\%d.fas"), sep = ""))
-        write.csv(out.log, paste(outdir, "/", i, ".logfile.", 
-            format(Sys.time(), "\%Y-\%m-\%d.csv"), sep = ""))
-    }
-    if (batchfile == "muscle") {
-        dir.create(paste(outdir, "/muscle", sep = ""))
-        littleFiles <- dir(outdir, full = FALSE, patt = ".fas")
-        writeLines(paste("muscle3.8.31_i86win32 -in ", paste("../", 
-            littleFiles, sep = ""), " -out ", paste(littleFiles, 
-            ".muscled.fas", sep = ""), sep = ""), paste(outdir, 
-            "/muscle/muscle.bat", sep = ""))
-    }
-    return("done!")
-  }
-}
 \keyword{IO}
 \keyword{file}
 \keyword{methods}

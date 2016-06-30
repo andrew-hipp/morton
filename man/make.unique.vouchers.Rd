@@ -39,19 +39,4 @@ Andrew Hipp and Kasey Pham
 \seealso{
 \code{\link{parse.INSDSeq}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (metadata, voucherFormula = c("Primary.collector.last.name", 
-    "Collector.number", "isolate", "CollectionNumber", "Collection")) 
-{
-    vouchers.ln.cn <- apply(metadata[voucherFormula], 1, function(x) paste(tidyName(x[!is.na(x)]), 
-        collapse = ""))
-    names(vouchers.ln.cn) <- metadata$NCBI_voucher
-    return(vouchers.ln.cn)
-  }
-}
 \keyword{manip}

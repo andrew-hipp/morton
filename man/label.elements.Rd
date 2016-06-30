@@ -49,22 +49,4 @@ Andrew Hipp and Kasey Pham
 \seealso{
 \code{\link{strsplit}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x, delim = "|", returnNum = 1, returnDelim = " ", ...)
-{
-    if ("phylo" \%in\% class(x))
-        labelVector <- x$tip.label
-    else labelVector <- x
-    out <- sapply(labelVector, function(x) paste(strsplit(x,
-        delim, ...)[[1]][returnNum], collapse = returnDelim))
-    out
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{methods}

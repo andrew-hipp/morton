@@ -47,22 +47,6 @@ tidyName(x, fixes = c("_", ".", " ", "-", ">"), case = c("lower", "upper", "noch
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x, fixes = c("_", ".", " ", "-", ">"), case = c("lower", 
-    "upper", "nochange")) 
-{
-    x = switch(case[1], lower = tolower(x), upper = toupper(x), 
-        nochange = x)
-    for (i in fixes) x <- (gsub(i, "", x, fixed = T))
-    x
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

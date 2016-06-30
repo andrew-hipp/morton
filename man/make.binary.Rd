@@ -47,24 +47,6 @@ make.binary(dat, binChars = strsplit("ACDEFGHIKLMNPQRSTVWY", "")[[1]], extras = 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (dat, binChars = strsplit("ACDEFGHIKLMNPQRSTVWY", "")[[1]], 
-    extras = c("-")) 
-{
-    dat <- dat[, apply(dat, 2, function(x) all(x \%in\% c(binChars, 
-        extras)))]
-    charCount <- apply(dat, 2, function(x) sum(unique(x) \%in\% 
-        binChars))
-    dat <- dat[, charCount == 2]
-    return(dat)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
