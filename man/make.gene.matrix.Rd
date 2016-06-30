@@ -1,63 +1,64 @@
 \name{make.gene.matrix}
 \alias{make.gene.matrix}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Linkage of Specimens to Sequences for Multiple Loci
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Creates a matrix which links gene sequences from multiple loci to their associated specimen, determined by assigning a voucher to each specimen using parsed metadata for each sequence.
 }
 \usage{
 make.gene.matrix(metadata, locusCol = "cleanedGeneRegion", vouchersCol = "newLabels", ncbiCol = "NCBI_accession", orgsCol = "organism", logerrors = TRUE, verbose = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{metadata}{
-%%     ~~Describe \code{metadata} here~~
+The output of \code{\link{parse.INSDSeq}}, containing all parsed metadata and sequences from the raw XML data. Must contain a column for vouchers, which can be made with \code{\link{make.unique.vouchers.R}} and added to metadata data frame using \code{\link{cbind}}.
 }
   \item{locusCol}{
-%%     ~~Describe \code{locusCol} here~~
+An optional string, the name of the column in the metadata which contains the name of the gene region.
 }
   \item{vouchersCol}{
-%%     ~~Describe \code{vouchersCol} here~~
+An optional string, the name of the column in the metadata which contains the voucher.
 }
   \item{ncbiCol}{
-%%     ~~Describe \code{ncbiCol} here~~
+An optional string, the name of the column in the metadata which contains the NCBI accession number.
 }
   \item{orgsCol}{
-%%     ~~Describe \code{orgsCol} here~~
+An optional string, the name of the column in the metadata which contains the name of the taxon.
 }
   \item{logerrors}{
-%%     ~~Describe \code{logerrors} here~~
-}
+An optional logical value indicating whether the function should export a csv file with sequences which did not have a voucher, which are automatically excluded from the output matrix.
   \item{verbose}{
-%%     ~~Describe \code{verbose} here~~
+An optional logical value indicating whether the function should print every row of the metadata it successfully incorporates into the matrix.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+\code{locusCol}, \code{vouchersCol}, \code{ncbiCol}, and \code{orgsCol} all 
+have default values that correspond to the default names of those columns from 
+other functions in the morton package. They are \code{cleanedGeneRegion}, 
+\code{newLabels}, \code{NCBI_accession}, and \code{organism}, respectively.
+  
+The default value for \code{logerrors} is TRUE. For \code{verbose}, it is FALSE.
+
+\code{verbose} can be a useful tool when troubleshooting to pinpoint where the 
+function has stopped.
+
+This function traverses the metadata data table from \code{parse.INSDSeq} and 
+generates a matrix where unique vouchers are the rows andgene loci are the 
+columns. Each cell represents a sequence, where its x and y position in the 
+matrix indicate which voucher and gene locus it belongs to. Cells therefore 
+contain the NCBI accession number for the sequence which they are associated 
+with. If there are multiple sequences for a single voucher and gene locus, the 
+NCBI accession numbers are both entered into the cell, delimited by a pipe(|).
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+A matrix which connects NCBI gene sequences to their associated loci and vouchers.
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{parse.INSDSeq}}, \code{\link{make.unique.vouchers}}, \code{\link{make.fasta.files}}, \code{\link{make.shared.gene.matrix}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -107,7 +108,5 @@ function (metadata, locusCol = "cleanedGeneRegion", vouchersCol = "newLabels",
     return(out)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{manip}
+\keyword{methods}

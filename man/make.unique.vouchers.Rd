@@ -1,48 +1,43 @@
 \name{make.unique.vouchers}
 \alias{make.unique.vouchers}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Assign Specimen Vouchers to Gene Sequences
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Generates a vector of vouchers with order corresponding to order of sequences 
+in rows of provided metadata table. 
 }
 \usage{
 make.unique.vouchers(metadata, voucherFormula = c("Primary.collector.last.name", "Collector.number", "isolate", "CollectionNumber", "Collection"))
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{metadata}{
-%%     ~~Describe \code{metadata} here~~
+A data frame of sequence-associated metadata, the output of \code{\link{parse.INSDSeq}}.
 }
   \item{voucherFormula}{
-%%     ~~Describe \code{voucherFormula} here~~
+A vector of strings, the names of the columns in the metadata that are to be 
+included in the voucher.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The default for voucherFormula is \code{Primary.collector.last.name, Collector.number, isolate, CollectionNumber, Collection},
+which correspond to default column names in the metadata. \code{organism} is not included in this 
+formula, as specimens can be re-classified throughout their lifetime, so taxon name may not stay
+constant across all sequences belonging to a single specimen.
+
+The output of this function should be added as a column to the metadata data frame in order to
+use the \code{\link{make.gene.matrix}} function. This can be done with \code{\link{cbind}}.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+A vector of strings, containing a generated voucher for each 
+sequence, order corresponding to the rows of the metadata.}
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{parse.INSDSeq}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -59,7 +54,4 @@ function (metadata, voucherFormula = c("Primary.collector.last.name",
     return(vouchers.ln.cn)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{manip}

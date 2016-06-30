@@ -1,63 +1,61 @@
 \name{make.fasta.files}
 \alias{make.fasta.files}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Export Loci in FASTA Format
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Write a separate FASTA file for all loci specified to an output directory given sequence data and a matrix linking accession numbers to specimen vouchers and loci.
 }
 \usage{
-make.fasta.files(geneMatrix, seqDat, genes, outdir = paste("fasta.out.", paste(sample(letters, 5), collapse = ""), format(Sys.time(), "\%Y-\%m-\%d"), sep = ""), maxtax = 1, treat.multiples = c("discard", "takefirst"), batchfile = "muscle")
+function(geneMatrix, seqDat, genes, 
+           outdir = paste('fasta.out.', 
+                          paste(sample(letters,5), collapse = ''), 
+                          format(Sys.time(), "%Y-%m-%d"), 
+                          sep = ''), 
+           maxtax = 1, treat.multiples = c('discard', 'takefirst'), 
+           batchfile = 'muscle')
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{geneMatrix}{
-%%     ~~Describe \code{geneMatrix} here~~
+The output from \code{\link{make.gene.matrix}}.  Connects vouchers with gene sequences and gene regions.
 }
   \item{seqDat}{
-%%     ~~Describe \code{seqDat} here~~
+The output of \code{\link{parse.INSDSeq}}.  A data frame where each row contains a sequence and its associated metadata.
 }
   \item{genes}{
-%%     ~~Describe \code{genes} here~~
+A vector containing the names of all gene regions to be written, each to its own separate FASTA file.  Should correspond to names of columns of geneMatrix.
 }
   \item{outdir}{
-%%     ~~Describe \code{outdir} here~~
+An optional string, the name of the directory to which the FASTA files should be written.  Will be created in current working directory if it does not already exist.
 }
   \item{maxtax}{
-%%     ~~Describe \code{maxtax} here~~
+An optional integer, the maximum number of taxon names allowable per individual.
 }
   \item{treat.multiples}{
-%%     ~~Describe \code{treat.multiples} here~~
+An optional vector containing options for treatment of individuals with multiple NCBI accession numbers for a given gene; either discards the voucher for the region or uses the first accession number only.
 }
   \item{batchfile}{
-%%     ~~Describe \code{batchfile} here~~
+An optional string, the name of the program that will process the FASTA files.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The default for \code{outdir} is the current working directory.
+The default for \code{maxtax} is 1.
+The default for \code{treat.multiples} is to discard.
+The default for \code{batchfile} is to export a batchfile invoking the program muscle. With this option, a directory will be created in the current working directory for storing the exported FASTA files and the batch file. Within that directory, another will be created to store processed muscle alignments. The batch file will call muscle to use this doubly-nested directory for its outputs.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns the string 'done!'. Called for the side-effect of writing fasta files to disk.
 }
 \references{
-%% ~put references to the literature/web site here ~
+Edgar, Robert C. (2004), MUSCLE: multiple sequence alignment with high accuracy and high throughput, Nucleic Acids Research 32(5), 1792-97.
 }
 \author{
-%%  ~~who you are~~
+Kasey Pham and Andrew Hipp
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{make.gene.matrix}}, \code{\link{parse.INSDSeq}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -105,7 +103,6 @@ function (geneMatrix, seqDat, genes, outdir = paste("fasta.out.",
     return("done!")
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{IO}
+\keyword{file}
+\keyword{methods}
