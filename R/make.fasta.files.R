@@ -1,14 +1,17 @@
 make.fasta.files <-
 function(geneMatrix, seqDat, genes, outdir = paste('fasta.out.', paste(sample(letters,5), collapse = ''), format(Sys.time(), "%Y-%m-%d"), sep = ''), maxtax = 1, treat.multiples = c('discard', 'takefirst'), batchfile = 'muscle') {
-## makes fasta files for individuals having the genes indicated
-## creates a log file with all individuals used for each gene
-## arguments:
-##  geneMatrix: output from make.gene.matrix
-##  seqDat: sequence data from NCBI
-##  genes: a vector of genes to use
-##  outdir: directory to write to
-##  maxtax: maximum number of taxon names allowable per individual
-##  treat.multiples: what to do for individuals that have multiple accessions for a given gene; currently either discards ('discard') them or takes the first NCBI accession ('takefirst')
+  # Purpose: make fasta files for individuals having the genes indicated
+    # creates a log file with all individuals used for each gene
+  # Arguments:
+    #  geneMatrix: output from make.gene.matrix
+    #  seqDat: sequence data from NCBI
+    #  genes: a vector of genes to use, top12 is the output of the top.12 function.
+    #  outdir: directory to write to
+    #  maxtax: maximum number of taxon names allowable per individual
+    #  treat.multiples: what to do for individuals that have multiple accessions 
+      # for a given gene; currently either discards ('discard') them or takes 
+      # the first NCBI accession ('takefirst')
+  # Returns: the string 'done!'
 
   if(!outdir %in% dir()) dir.create(outdir)
   geneMatrix <- geneMatrix[geneMatrix$numberOfOrgs <= maxtax, ]

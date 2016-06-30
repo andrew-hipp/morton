@@ -1,56 +1,53 @@
 \name{label.elements}
 \alias{label.elements}
 \title{
-%%  ~~function to do ... ~~
+Extract Information from Tip Labels of a Phylogenetic Tree
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Parse tip labels of an object of class \code{phylo} and
+store information to a vector with the same order as
+the tip labels of the tree.
 }
 \usage{
 label.elements(x, delim = "|", returnNum = 1, returnDelim = " ", ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+The tree whose tips are to be parsed. Should be of class \code{phylo}.
 }
   \item{delim}{
-%%     ~~Describe \code{delim} here~~
+The symbol in the tip labels used to delimit different pieces of
+information.
 }
   \item{returnNum}{
-%%     ~~Describe \code{returnNum} here~~
+The place of the information desired from the tip labels. For example,
+if information is delimited by |, species is desired, and tips are in
+the following format:
+  Quercus_rubra|ARB355|Johnson
+then the returnNum would be 1, as the species is the first piece of
+delimited information.
 }
   \item{returnDelim}{
-%%     ~~Describe \code{returnDelim} here~~
+The delimitation character for the new tip labels generated.
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+Other arguments pertinent to the function \code{\link{strsplit}}.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The default value for \code{delim} is a pipe (|). The default for
+returnNum is 1, and the default for returnDelim is a space, ' '.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+  \item{out}{A vector of the information extracted from the tip
+  labels of the tree, ordered corresponding to tip labels.}
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{strsplit}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -70,5 +67,4 @@ function (x, delim = "|", returnNum = 1, returnDelim = " ", ...)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{methods}
