@@ -9,7 +9,6 @@ Determines which specimen vouchers do not have any sequences associated with the
 \usage{
 orphan.individuals(dat)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dat}{
 A matrix, the output of \code{\link{make.gene.matrix}}.
@@ -17,15 +16,13 @@ A matrix, the output of \code{\link{make.gene.matrix}}.
 }
 \details{
 Uses the function \code{\link{make.shared.gene.matrix}} internally.
+All returned vectors are ordered to correspond with the rows of the gene matrix.
 }
 \value{
-  \item{NCBI_accession}{A vector of all NCBI accession numbers}
-  \item{taxon}{Description of 'comp2'}
-  \item{orphans}{}
-  \item{notOrphans}{}
-}
-\references{
-%% ~put references to the literature/web site here ~
+  \item{NCBI_accession}{A vector of pipe-delimited NCBI accession numbers for each voucher.}
+  \item{taxon}{A vector of the taxon name of each voucher; if multiple, names are pipe-delimited.}
+  \item{orphans}{A vector of all vouchers which do not have any gene sequences associated with them.}
+  \item{notOrphans}{A vector of all vouchers which have at least one gene sequence associated with them.}
 }
 \author{
 Andrew Hipp and Kasey Pham
@@ -35,5 +32,4 @@ Andrew Hipp and Kasey Pham
 \code{\link{make.gene.matrix}}, \code{\link{make.shared.gene.matrix}}
 }
 
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{methods}

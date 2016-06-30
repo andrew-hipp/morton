@@ -25,6 +25,8 @@ which correspond to default column names in the metadata. \code{organism} is not
 formula, as specimens can be re-classified throughout their lifetime, so taxon name may not stay
 constant across all sequences belonging to a single specimen.
 
+The function \code{tidyName} is used internally to standardize vouchers so that differences in capitalization and punctuation do not prevent the linkage of two gene sequences to a single specimen.
+
 The output of this function should be added as a column to the metadata data frame in order to
 use the \code{\link{make.gene.matrix}} function. This can be done with \code{\link{cbind}}.
 }
@@ -37,6 +39,6 @@ Andrew Hipp and Kasey Pham
 }
 
 \seealso{
-\code{\link{parse.INSDSeq}}
+\code{\link{parse.INSDSeq}}, \code{\link{tidyName}}
 }
 \keyword{manip}
