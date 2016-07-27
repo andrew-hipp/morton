@@ -11,4 +11,5 @@ blank.tips = T, ...) {
   if(colorIt) tiplabels(col = colors, pch = dot.pch, cex = tip.cex)
   if(byLabels) tiplabels(vectorToColorBy, cex = tip.cex, align.tip.label = T)
   if(addLegend) legend(a$x.lim[1] - abs(diff(a$x.lim) / 4), a$y.lim[2], legend = unique(vectorToColorBy), pch = dot.pch, cex = 1, col = unique(colors), bty = 'n')
+  invisible(a)
   }

@@ -1,72 +1,36 @@
 \name{make.shared.gene.matrix}
 \alias{make.shared.gene.matrix}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Count Shared Specimens Between Loci
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Using the output of make.gene.matrix, creates a gene matrix which summarizes 
+the number of specimens shared between all pairs of gene loci.
 }
 \usage{
 make.shared.gene.matrix(dat, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\% c("orgs", "ncbiAcc", "numberOfOrgs", "numberOfAccessions", "numberOfSequences")])
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dat}{
-%%     ~~Describe \code{dat} here~~
+The output of \code{make.gene.matrix}, a matrix linking gene sequence, specimen voucher, and gene locus.
 }
   \item{loci}{
-%%     ~~Describe \code{loci} here~~
+An optional vector of strings, the names of loci to include when counting shared specimens between pairs.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+\code{loci} includes all loci by default.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+A matrix of numeric values, where both rows and columns are loci 
+and cells contain the number of individuals shared between two loci.}
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{make.gene.matrix}} 
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (dat, loci = dimnames(dat)[[2]][!dimnames(dat)[[2]] \%in\% 
-    c("orgs", "ncbiAcc", "numberOfOrgs", "numberOfAccessions", 
-        "numberOfSequences")]) 
-{
-    out <- matrix(NA, length(loci), length(loci), dimnames = list(loci, 
-        loci))
-    for (i in 1:length(loci)) {
-        for (j in 1:length(loci)) {
-            out[loci[i], loci[j]] <- sum(ifelse(dat[[loci[i]]] == 
-                0, 0, 1) + ifelse(dat[[loci[j]]] == 0, 0, 1) == 
-                2)
-        }
-    }
-    return(out)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{manip}
+\keyword{methods}

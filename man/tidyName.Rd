@@ -1,68 +1,39 @@
 \name{tidyName}
 \alias{tidyName}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Clean Up Strings
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Remove spaces, punctuation, and capitalization from a string.
 }
 \usage{
 tidyName(x, fixes = c("_", ".", " ", "-", ">"), case = c("lower", "upper", "nochange"))
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+The string to be modified.
 }
   \item{fixes}{
-%%     ~~Describe \code{fixes} here~~
+Optional; a vector of all characters to be removed.
 }
   \item{case}{
-%%     ~~Describe \code{case} here~~
+Optional; the case to which all characters in the string will be changed. There are three options: \code{lower} (the default), \code{upper}, and \code{nochange}.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+By default, underscores (_), periods (.), spaces ( ), dashes (-) and right angle bracket (>) will be removed from the string, and the string will be converted to all lowercase.
+
+This function was intended for use in standardizing voucher names in \code{make.unique.vouchers}, so that punctuation, spacing, and capitalization differences in sequence metadata does not prevent the grouping of multiple sequences to a single specimen voucher (ie: Hipp_2016 vs. HIPP2016).
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+The modified string is returned.
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{make.unique.vouchers}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x, fixes = c("_", ".", " ", "-", ">"), case = c("lower", 
-    "upper", "nochange")) 
-{
-    x = switch(case[1], lower = tolower(x), upper = toupper(x), 
-        nochange = x)
-    for (i in fixes) x <- (gsub(i, "", x, fixed = T))
-    x
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{methods}

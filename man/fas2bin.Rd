@@ -47,27 +47,6 @@ fas2bin(infile, outfile, ...)
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (infile, outfile, ...) 
-{
-    in.bin <- make.binary(t(as.data.frame(read.fasta(infile, 
-        seqtype = "AA", set.attributes = F))))
-    out.seqs <- vector("list", dim(in.bin)[1])
-    out.names <- character(dim(in.bin)[1])
-    for (i in 1:dim(in.bin)[1]) {
-        out.seqs[[i]] <- in.bin[i, ]
-        out.names[[i]] <- row.names(in.bin)[i]
-    }
-    write.fasta(out.seqs, out.names, outfile, ...)
-    return(in.bin)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
