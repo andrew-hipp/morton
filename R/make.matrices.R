@@ -6,4 +6,4 @@ source('https://raw.githubusercontent.com/andrew-hipp/morton/master/R/make.fasta
 source('https://raw.githubusercontent.com/andrew-hipp/morton/master/R/refine.fasta.R')
 source('https://raw.githubusercontent.com/andrew-hipp/morton/master/R/make.unique.vouchers.R')
 source('https://raw.githubusercontent.com/andrew-hipp/morton/master/R/make.gene.matrix.R')
-source('https://raw.githubusercontent.com/andrew-hipp/morton/master/R/gene.matrix.stats.R')
+
