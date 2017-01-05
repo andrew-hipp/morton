@@ -1,55 +1,52 @@
 \name{tips.expected}
 \alias{tips.expected}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Calculate Expected Tips in a Clade
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Given a tree and a set of tips, this function determines the most recent
+common ancestor (MRCA) of these tips and calculates how many tips are 
+expected to be in a clade with this MRCA. Requires the installation of
+the package \code{phangorn}.
 }
 \usage{
 tips.expected(tr, tips, value = FALSE, ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tr}{
-%%     ~~Describe \code{tr} here~~
+  The tree, of class \code{phylo}.
 }
   \item{tips}{
-%%     ~~Describe \code{tips} here~~
+  A vector of tip labels from which to calculate MRCA.
 }
   \item{value}{
-%%     ~~Describe \code{value} here~~
+  A binary determining what the function returns. If \code{TRUE},
+  it returns a vector of the tip labels of the MRCA's
+  expected descendents for a full clade. If \code{FALSE}, it returns 
+  the number of expected descendents.
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+  Arguments to be passed to the function \code{Descendents} in
+  phangorn.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+  The default for value is \code{FALSE}.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{out }{Either the number of expected descendents from the MRCA,
+  or a vector of tip labels of the expected descendents, depending on
+  the argument \code{value}.}
 }
 \references{
-%% ~put references to the literature/web site here ~
+Schliep K.P. 2011. phangorn: phylogenetic analysis in R. Bioinformatics, 27(4) 592-593. http://phangorn.org.
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{phangorn}}, \code{\link{getMRCA}}, \code{\link{Descendents}}
 }
 
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

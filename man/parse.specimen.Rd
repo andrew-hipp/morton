@@ -1,8 +1,7 @@
 \name{parse.specimen}
 \alias{parse.specimen}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Parse the Specimen Field From a Parsed XML File
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~

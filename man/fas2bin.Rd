@@ -1,11 +1,10 @@
 \name{fas2bin}
 \alias{fas2bin}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Convert a File in FASTA Format to Binary
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+
 }
 \usage{
 fas2bin(infile, outfile, ...)
@@ -13,40 +12,27 @@ fas2bin(infile, outfile, ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{infile}{
-%%     ~~Describe \code{infile} here~~
+The address of the FASTA file to be converted.  If not in the current working directory, provide the full address.  The FASTA file must contain amino acid sequences, not DNA sequences.
 }
   \item{outfile}{
-%%     ~~Describe \code{outfile} here~~
+The name (or full address, if necessary) of the output FASTA file to be written, containing the binary matrix.
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+Any other arguments that can be passed to the function \code{write.fasta} from the \code{ape} package.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This code makes use of the function \code{\make.binary} from the same package.  See documentation of that function for more details on requirements for the binary matrix.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+The converted matrix, where there can only be two states per column.
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{make.binary}}, \code{\link{write.fasta}}
 }
 
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ methods }
+\keyword{ file }
