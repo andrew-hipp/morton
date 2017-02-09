@@ -11,7 +11,7 @@ function(guideTree, otherTrees, matchBoots = T, plotBoots = T, ...) {
     mat.boots <- match.mat[match.index, ]
     for(i in seq(dim(mat.boots)[2])) mat.boots[, i] <- as.integer(allTreesLabels[[i]][mat.boots[, i]])
     out <- list(mat.boots = mat.boots, mat.full = match.mat, mat.index = match.index)
-    if(plotBoots) matplot(mat.boots[order(its.ets.matched$mat.boots[, 1], decreasing = T), ], ...)
+    if(plotBoots) matplot(mat.boots[order(out$mat.boots[, 1], decreasing = T), ], ...)
     }
   else out <- list(mat.full = match.mat, mat.index = match.index)
   return(out)
