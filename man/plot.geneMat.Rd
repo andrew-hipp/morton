@@ -38,7 +38,7 @@ plot.geneMat(x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5, 1, 2),
   gene sequence for that gene to be included in the plot.
 }
   \item{sortByFreq}{
-  Optional. A binary determining whether genes should be ordered
+  Optional. A boolean determining whether genes should be ordered
   by the number of individuals with data for that gene, from
   most to least.
 }
@@ -55,7 +55,7 @@ plot.geneMat(x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5, 1, 2),
   Optional. The height of the pdf file in inches.
 }
   \item{remove.tips}{
-  Optional. A binary determining whether or not tip labels should be plotted.
+  Optional. A boolean determining whether or not tip labels should be plotted.
 }
   \item{\dots}{
   Other arguments to be passed to the \code{points} function.

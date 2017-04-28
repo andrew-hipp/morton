@@ -20,7 +20,7 @@ tips.expected(tr, tips, value = FALSE, ...)
   A vector of tip labels from which to calculate MRCA.
 }
   \item{value}{
-  A binary determining what the function returns. If \code{TRUE},
+  A boolean determining what the function returns. If \code{TRUE},
   it returns a vector of the tip labels of the MRCA's
   expected descendents for a full clade. If \code{FALSE}, it returns 
   the number of expected descendents.

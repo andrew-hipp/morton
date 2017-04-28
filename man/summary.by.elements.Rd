@@ -16,7 +16,7 @@ summary.by.elements(tr, returnEffectOnTreeLength = TRUE, minSizeForEffect = 3, .
   The tree to be analyzed, of class \code{phylo}
 }
   \item{returnEffectOnTreeLength}{
-  A binary determining whether each taxon's effect on tree length
+  A boolean determining whether each taxon's effect on tree length
   should be calculated and returned. Increases calculation time.
 }
   \item{minSizeForEffect}{
