@@ -1,52 +1,38 @@
 \name{summarize.gene.coverage}
 \alias{summarize.gene.coverage}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Plot Individuals Sequenced Per Gene
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Plot the number of individuals sequenced per gene given a gene matrix from
+\code{make.gene.matrix}.
 }
 \usage{
 summarize.gene.coverage(datMat, extra.left = 2, ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{datMat}{
-%%     ~~Describe \code{datMat} here~~
+  A gene matrix from \code{make.gene.matrix}.
 }
   \item{extra.left}{
-%%     ~~Describe \code{extra.left} here~~
+  Optional. The amount of space to add to the left margin of the plot.
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+  Other arguments which can be passed to the function \code{points}.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+  The default for \code{extra.left} is 2.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+Returns the string 'done!'. Called for the side-effect of plotting to R graphics device.
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{make.gene.matrix}}, \code{\link{points}}
 }
 
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ hplot }

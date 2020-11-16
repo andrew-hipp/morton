@@ -4,8 +4,8 @@ function(x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5,1,2), margi
          pdfTitle = format(Sys.time(), 'geneMat.plot.%Y.%m.%d.%H%M.pdf'), pdfW = 10, pdfH = 10,
          remove.tips = TRUE, ...) {
   if(!is.na(pdfTitle)) pdf(pdfTitle, pdfW, pdfH)
-  x <- t(x) # puts genes as rows, inds as columns
-  x <- x[genes, ]
+  # x <- t(x) 
+  x <- t(x)[genes, ] # puts genes as rows, inds as columns and subsets by genes
   if(sortByFreq) x <- x[names(sort(rowSums(x != ''), decreasing = T)), ]
   if(!is.na(tr[1])) {
     tr <- read.tree(text = write.tree(tr))
@@ -40,6 +40,6 @@ function(x, tr = NA, genes = colnames(x)[6:(dim(x)[2])], panes = c(5,1,2), margi
 	out.tree <- plot(tr, direction = 'upwards', show.tip.label = F, no.margin = F)
     }
   if(!is.na(pdfTitle)) dev.off()
-  out <- list(tree = out.tree, geneSums = out.geneSums, ngenes = out.ngenes)
+  out <- list(tree = ifelse(!is.na(tr[1]), out.tree, NA), geneSums = ifelse(!is.na(tr[1]), out.geneSums, NA), ngenes = out.ngenes)
   invisible(out) # should return something more useful here
   }

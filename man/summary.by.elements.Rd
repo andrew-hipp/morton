@@ -1,58 +1,53 @@
 \name{summary.by.elements}
 \alias{summary.by.elements}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Calculate Taxonomic Disparity For All Taxa
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Calculate taxonomic disparity for all taxa represented in a tree,
+assuming that tip labels are pipe-delimited and the first part of
+the label is the taxon.
 }
 \usage{
-summary.by.elements(tr, returnEffectOnTreeLength = TRUE, minSizeForEffect = 3, recommendDrops = TRUE, ...)
+summary.by.elements(tr, returnEffectOnTreeLength = TRUE, minSizeForEffect = 3, ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tr}{
-%%     ~~Describe \code{tr} here~~
+  The tree to be analyzed, of class \code{phylo}
 }
   \item{returnEffectOnTreeLength}{
-%%     ~~Describe \code{returnEffectOnTreeLength} here~~
+  A boolean determining whether each taxon's effect on tree length
+  should be calculated and returned. Increases calculation time.
 }
   \item{minSizeForEffect}{
-%%     ~~Describe \code{minSizeForEffect} here~~
-}
-  \item{recommendDrops}{
-%%     ~~Describe \code{recommendDrops} here~~
+  The minimum number of individuals in a taxon to calculate its
+  effect on tree length.
 }
   \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+  Arguments which can be passed to the function \code{label.elements}.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+  The default for \code{returnEffectOnTreeLength} is \code{TRUE}.
+  The default for \code{minSizeForEffect} is 3, and any taxa
+  with less than 3 individuals is automatically assigned an
+  effect size of 0.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+  \item{disparity.mat }{A matrix with taxa as rows and the number of
+  individuals in each taxon, the expected number of tips from the taxon's
+  most recent common ancestor, and the taxonomic disparity of the taxon
+  as columns.}
+  \item{effectSize }{A vector of the effects of each taxon on the tree
+  length. Names of each effect size are the taxa with which they are
+  associated.}
 }
 \author{
-%%  ~~who you are~~
+Andrew Hipp and Kasey Pham
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{label.elements}}, \code{\link{tips.expected}}
 }
 
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

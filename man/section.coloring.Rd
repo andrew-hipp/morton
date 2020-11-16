@@ -1,33 +1,29 @@
 \name{section.coloring}
 \alias{section.coloring}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Color Tree Tips by Section
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Plot a circular tree with tips colored by section to a PDF file. Assumes that
+section is the sixth pipe-delimited part of a tip label.
 }
 \usage{
-section.coloring(tr, tipChar = "-", tip.cex = 0.1, tiplty = 0, 
+section.coloring(tr, tipChar = "-", tiplty = 0, 
                  pdfTitle = paste("trial.", paste(sample(letters, 3), collapse = ""), ".pdf", sep = ""), 
 				 dist.cats = rep(1, length(tr$tip.label)), whiteOut = "NA", 
 				 xy.multiplier = 1.5, offset.proportion = 0.03, writeLabels = 0.1, 
 				 vectorToColorBy = label.elements(tr, "|", returnNum = 6, fixed = T),
 				 ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tr}{
-%%     ~~Describe \code{tr} here~~
+  The tree to be plotted, an object of class \code{phylo}.
 }
   \item{tipChar}{
-%%     ~~Describe \code{tipChar} here~~
-}
-  \item{tip.cex}{
-%%     ~~Describe \code{tip.cex} here~~
+  Optional. The character with which to replace the full tip label.
 }
   \item{tiplty}{
-%%     ~~Describe \code{tiplty} here~~
+  
 }
   \item{pdfTitle}{
 %%     ~~Describe \code{pdfTitle} here~~
