@@ -45,7 +45,7 @@ The default for \code{treat.multiples} is to discard.
 The default for \code{batchfile} is to export a batchfile invoking the program muscle. With this option, a directory will be created in the current working directory for storing the exported FASTA files and the batch file. Within that directory, another will be created to store processed muscle alignments. The batch file will call muscle to use this doubly-nested directory for its outputs.
 }
 \value{
-Returns the string 'done!'. Called for the side-effect of writing fasta files to disk.
+Returns the string done! Called for the side-effect of writing fasta files to disk.
 }
 \references{
 Edgar, Robert C. (2004), MUSCLE: multiple sequence alignment with high accuracy and high throughput, Nucleic Acids Research 32(5), 1792-97.
