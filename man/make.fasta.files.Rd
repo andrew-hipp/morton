@@ -10,7 +10,7 @@ Write a separate FASTA file for all loci specified to an output directory given 
 function(geneMatrix, seqDat, genes,
            outdir = paste('fasta.out.',
                           paste(sample(letters,5), collapse = ''),
-                          format(Sys.time(), '%Y-%m-%d'),
+                          format(Sys.time(), '.%Y-%m-%d'),
                           sep = ''),
            maxtax = 1, treat.multiples = c('discard', 'takefirst'),
            batchfile = 'muscle')
