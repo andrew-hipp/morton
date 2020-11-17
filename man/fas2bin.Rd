@@ -22,7 +22,7 @@ Any other arguments that can be passed to the function \code{write.fasta} from t
 }
 }
 \details{
-This code makes use of the function \code{\make.binary} from the same package.  See documentation of that function for more details on requirements for the binary matrix.
+This code makes use of the function \code{make.binary} from the same package.  See documentation of that function for more details on requirements for the binary matrix.
 }
 \value{
 The converted matrix, where there can only be two states per column.

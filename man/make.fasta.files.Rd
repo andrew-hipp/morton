@@ -7,12 +7,12 @@ Export Loci in FASTA Format
 Write a separate FASTA file for all loci specified to an output directory given sequence data and a matrix linking accession numbers to specimen vouchers and loci.
 }
 \usage{
-function(geneMatrix, seqDat, genes, 
-           outdir = paste('fasta.out.', 
-                          paste(sample(letters,5), collapse = ''), 
-                          format(Sys.time(), "%Y-%m-%d"), 
-                          sep = ''), 
-           maxtax = 1, treat.multiples = c('discard', 'takefirst'), 
+function(geneMatrix, seqDat, genes,
+           outdir = paste('fasta.out.',
+                          paste(sample(letters,5), collapse = ''),
+                          format(Sys.time(), "%Y-%m-%d"),
+                          sep = ''),
+           maxtax = 1, treat.multiples = c('discard', 'takefirst'),
            batchfile = 'muscle')
 }
 \arguments{
