@@ -12,8 +12,8 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
       # tip : tip to add
       # node : pipe-delimited taxon list that tells where to add what node
       # distUp : distance in branch-length units to place each tip toward root of tree
-      # weldTree : subtree to add on if needed
-      # weldTreeGrep : pipe-delimited taxon list telling where to add weldTree
+    # weldTree : subtree to add on if needed
+    # weldTreeGrep : pipe-delimited taxon list telling where to add weldTree
 
   ## grab names if nothing is specified
   if(is.null(tips)) {
