@@ -12,7 +12,7 @@ Acer saccharum
 Abies concolor
 Acer saccharum
 Aesculus glabra
-Asimina tribola
+Asimina triloba
 Carya ovata
 Catalpa speciosa
 Celtis occidentalis
@@ -23,9 +23,9 @@ Ginkgo biloba
 Juglans nigra
 Juniperus chinensis
 Larix decidua
-Larix gmelini
+Larix gmelinii
 Picea abies
-Picea koyamai
+Picea koyamae
 Pinus nigra
 Pinus ponderosa
 Pinus resinosa
