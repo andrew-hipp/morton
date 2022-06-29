@@ -1,14 +1,3 @@
-Asimina triloba
-Carya ovata
-Chamaecyparis pisifera
-Juniperus chinensis
-Picea abies
-Platanus occidentalis
-Quercus bicolor
-Tsuga canadensis
-Larix gmelinii
-Taxodium distichum
-Acer saccharum
 Abies concolor
 Acer saccharum
 Aesculus glabra
