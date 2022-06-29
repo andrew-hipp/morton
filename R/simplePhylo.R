@@ -34,26 +34,18 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
     tr <- dat.smithBrown
   } # close if is.null tr
 
-  ## prune to taxa
-  if(any(!tipNames %in% tr$tip.label)) {
-    message('*** You are missing a few names in the tree ***')
-    print(setdiff(tipNames, tr$tip.label))
-  } # close if
-  tr2 <- drop.tip(tr, setdiff(tr$tip.label, tipNames))
-  tr2 <- force.ultrametric(tr2)
-
   ## weld on singletons
   if(!is.null(nodes)) {
     message('binding new tips; still troublshooting')
     for(i in seq(dim(nodes)[1])) {
       message(paste('... binding', nodes$tip[i], 'to phylogeny'))
-      tipGrep <- grep(nodes$node[i], tr2$tip.label, value = T)
-      nodeTemp <- findMRCA(tr2, tipGrep)
+      tipGrep <- grep(nodes$node[i], tr$tip.label, value = T)
+      nodeTemp <- findMRCA(tr, tipGrep)
       if(is.null(nodeTemp)) {
         message('   ... sister to a tip...')
         nodeTemp <- grep(tipGrep, tr$tip.label)
       }
-    tr2 <- bind.tip(tr2, nodes$tip[i],
+    tr <- bind.tip(tr, nodes$tip[i],
                     where = nodeTemp, position = nodes$distUp[i])
     rm(nodeTemp)
   } # close for i
@@ -62,26 +54,34 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
   ## weld on subtree
   if(!is.null(weldTree)) {
     message('doing this stuff -- still to be coded')
-  tr2 <-
-    drop.tip(tr2,
-              grep(weldTreeGrep, tr2$tip.label, value = T),
+  tr <-
+    drop.tip(tr,
+              grep(weldTreeGrep, tr$tip.label, value = T),
               trim.internal = F
             )
 
   dat.subtreeDepth <-
-    max(node.depth.edgelength(tr2)) -
-    node.depth.edgelength(tr2)[which(tr2$tip.label == '')]
+    max(node.depth.edgelength(tr)) -
+    node.depth.edgelength(tr)[which(tr$tip.label == '')]
 
   subtreePos <-
     max(weldTree %>% node.depth.edgelength) - dat.subtreeDepth
 
-  tr2 <-
-    bind.tree(tr2, weldTree,
-              where = which(tr2$tip.label == ''),
+  tr <-
+    bind.tree(tr, weldTree,
+              where = which(tr$tip.label == ''),
               position = subtreePos)
-  tr2 <- drop.tip(tr2, '')
+  tr <- drop.tip(tr, '')
   } # close weldTree subroutine
 
+  ## prune to taxa
+  tr <- drop.tip(tr, setdiff(tr$tip.label, tipNames))
+  if(any(!tipNames %in% tr$tip.label)) {
+    message('*** You are missing a few names in the tree ***')
+    print(setdiff(tipNames, tr$tip.label))
+  } # close if
+  tr <- force.ultrametric(tr)
+
   ## return trees
-  return(tr2)
+  return(tr)
 } # close function
