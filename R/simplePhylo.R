@@ -16,9 +16,11 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
       # weldTreeGrep : pipe-delimited taxon list telling where to add weldTree
 
   ## grab names if nothing is specified
-  tipNames <-
-    readLines('https://raw.githubusercontent.com/andrew-hipp/morton/master/data/mor.exp.2022.txt') %>%
-    gsub(pattern = ' ', replacement = '_')
+  if(is.null(tips)) {
+    tipNames <-
+      readLines('https://raw.githubusercontent.com/andrew-hipp/morton/master/data/mor.exp.2022.txt') %>%
+      gsub(pattern = ' ', replacement = '_')
+    } else tipNames <- tips
 
   ## get Smith and Brown 2018 tree if needed
   if(is.null(tr)) {
