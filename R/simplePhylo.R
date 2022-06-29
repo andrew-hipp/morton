@@ -3,7 +3,7 @@ library(ape)
 library(phytools)
 library(magrittr)
 
-simple.phylo <- function(tips = NULL, tr = NULL, nodes = NULL,
+simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
                           weldTree = NULL, weldTreeGrep = NULL) {
   ## Arguments
     # tips: a vector of tip names
