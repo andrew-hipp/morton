@@ -84,4 +84,5 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
 
   ## return trees
   return(tr)
+  
 } # close function
