@@ -4,7 +4,7 @@ library(phytools)
 library(magrittr)
 
 simple.phylo <- function(tips = NULL, tr = NULL, nodes = NULL,
-                          weldTree = NULL, weldTreeGrep) {
+                          weldTree = NULL, weldTreeGrep = NULL) {
   ## Arguments
     # tips: a vector of tip names
     # tr: the base phylogeny to use
