@@ -48,7 +48,6 @@ simple.phylo <- function(tips = NULL, tr = NULL, nodes = NULL,
   ## weld on subtree
   if(!is.null(weldTree)) {
     message('doing this stuff -- still to be coded')
-  }
   tr2 <-
     drop.tip(tr2,
               grep(weldTreeGrep, tr2$tip.label, value = T),
@@ -67,6 +66,7 @@ simple.phylo <- function(tips = NULL, tr = NULL, nodes = NULL,
               where = which(tr2$tip.label == ''),
               position = subtreePos)
   tr2 <- drop.tip(tr2, '')
+  } # close weldTree subroutine
 
   ## return trees
   return(tr2)
