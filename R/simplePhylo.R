@@ -44,8 +44,20 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
 
   ## weld on singletons
   if(!is.null(nodes)) {
-    message('doing this stuff -- still to be coded')
-  }
+    message('binding new tips; still troublshooting')
+    for(i in seq(dim(nodes)[1])) {
+      message(paste('... binding', nodes$tip[i], 'to phylogeny'))
+      tipGrep <- grep(nodes$node[i], tr2$tip.label, value = T)
+      nodeTemp <- findMRCA(tr2, tipGrep)
+      if(is.null(nodeTemp)) {
+        message('   ... sister to a tip...')
+        nodeTemp <- grep(tipGrep, tr$tip.label)
+      }
+    tr2 <- bind.tip(tr2, nodes$tip[i],
+                    where = nodeTemp, position = nodes$distUp[i])
+    rm(nodeTemp)
+  } # close for i
+} # close if !is.null nodes
 
   ## weld on subtree
   if(!is.null(weldTree)) {
