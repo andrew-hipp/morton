@@ -79,10 +79,10 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
   } # close weldTree subroutine
 
   ## prune to taxa
-  tr <- drop.tip(tr, setdiff(tr$tip.label, tipNames))
-  if(any(!tipNames %in% tr$tip.label)) {
+  tr <- drop.tip(tr, setdiff(tr$tip.label, tips))
+  if(any(!tips %in% tr$tip.label)) {
     message('*** You are missing a few names in the tree ***')
-    print(setdiff(tipNames, tr$tip.label))
+    print(setdiff(tips, tr$tip.label))
   } # close if
   tr <- force.ultrametric(tr)
 
