@@ -45,9 +45,9 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
         message('   ... sister to a tip...')
         nodeTemp <- grep(tipGrep, tr$tip.label)
       }
-    if(tr$edge.length[which(tr$edge[, 2] == 65)] < nodes$distUp[i]) {
+    if(tr$edge.length[which(tr$edge[, 2] == nodeTemp)] < nodes$distUp[i]) {
       message(paste('   ... using smaller value for distUp; branch too short...'))
-      nodes$distUp[i] <- 0.5 * tr$edge.length[which(tr$edge[, 2] == 65)]
+      nodes$distUp[i] <- 0.5 * tr$edge.length[which(tr$edge[, 2] == nodeTemp)]
     } # closing correction for short branches
     tr <- bind.tip(tr, nodes$tip[i],
                     where = nodeTemp, position = nodes$distUp[i])
