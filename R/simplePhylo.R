@@ -4,7 +4,8 @@ library(phytools)
 library(magrittr)
 
 simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
-                          weldTree = NULL, weldTreeGrep = NULL) {
+                          weldTree = NULL, weldTreeGrep = NULL,
+                          ultramethod = 'extend') {
   ## Arguments
     # tips: a vector of tip names
     # tr: the base phylogeny to use
@@ -84,7 +85,7 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
     message('*** You are missing a few names in the tree ***')
     print(setdiff(tipNames, tr$tip.label))
   } # close if
-  tr <- force.ultrametric(tr)
+  tr <- force.ultrametric(tr, method = ultramethod)
 
   ## return trees
   return(tr)
