@@ -4,6 +4,6 @@ function(x, delim = '|', returnNum = 1, returnDelim = '|', uniquify = TRUE, ...)
   if('phylo' %in% class(x)) labelVector <- x$tip.label
   else labelVector <- x
   out <- sapply(labelVector, function(x) paste(strsplit(x, delim, ...)[[1]][returnNum], collapse = returnDelim))
-  if(uniquify) out <- make.unique(out)
+  if(uniquify) out <- make.unique(out, sep = '_')
   out
   }
