@@ -1,13 +1,13 @@
-# make a little phylo
+# make a little welded phylo
 library(ape)
 library(phytools)
 library(magrittr)
 
 simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
                           weldTree = NULL, weldTreeGrep = NULL,
-                          ultramethod = 'extend') {
+                          ultramethod = 'nnls', prune = TRUE) {
   ## Arguments
-    # tips: a vector of tip names
+    # tips: a vector of tip names that need to be in there; defaults to tree tips
     # tr: the base phylogeny to use
     # nodes: a data.frame with columns 'tip', 'node', 'distUp'
       # tip : tip to add
@@ -15,12 +15,12 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
       # distUp : distance in branch-length units to place each tip toward root of tree
     # weldTree : subtree to add on if needed
     # weldTreeGrep : pipe-delimited taxon list telling where to add weldTree
+    # ultramethod : method passed in to phytools::force.ultrametric
+    # prune : if T, drop tips not in `tips`
 
   ## grab names if nothing is specified
   if(is.null(tips)) {
-    tipNames <-
-      readLines('https://raw.githubusercontent.com/andrew-hipp/morton/master/data/mor.exp.2022.txt') %>%
-      gsub(pattern = ' ', replacement = '_')
+    tipNames <- tr$tip.label
     } else tipNames <- tips
 
   ## get Smith and Brown 2018 tree if needed
@@ -80,7 +80,7 @@ simplePhylo <- function(tips = NULL, tr = NULL, nodes = NULL,
   } # close weldTree subroutine
 
   ## prune to taxa
-  tr <- drop.tip(tr, setdiff(tr$tip.label, tipNames))
+  if(prune) tr <- drop.tip(tr, setdiff(tr$tip.label, tipNames))
   if(any(!tipNames %in% tr$tip.label)) {
     message('*** You are missing a few names in the tree ***')
     print(setdiff(tipNames, tr$tip.label))
