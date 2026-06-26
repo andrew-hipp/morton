@@ -4,10 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`morton` is an R package (Andrew L. Hipp, The Morton Arboretum) of tools for manipulating phylogenetic, genetic, and other biodiversity data. It is a personal/lab research package, not a CRAN package — versioning is loose and the API is informal.
+> **This is not a complete, installable R package.** It is a collection of R scripts in various states of readiness for packaging. The `DESCRIPTION`/`NAMESPACE`/`man/` scaffolding exists but is incomplete and partly inconsistent (see dependencies below), so `R CMD INSTALL`/`build`/`check` are not the intended workflow and may fail. **Users are advised to `source()` individual functions directly** rather than installing the repository as a package.
 
-- Hard dependencies (`Depends`): `ape`, `phytools`, `parallel`
-- Imports: `XML`, `gdata`, `Biostrings`, and `seqinr` (`read.fasta`/`write.fasta`)
+`morton` is a collection of R tools (Andrew L. Hipp, The Morton Arboretum) for manipulating phylogenetic, genetic, and other biodiversity data. It is a personal/lab research codebase, not a CRAN package — versioning is loose and the API is informal.
+
+- Dependencies are declared in two places that disagree. `DESCRIPTION` only has `Depends: ape, phytools, parallel` (and no `Imports:` field; its `Date` is stale at 2016-04-20). `NAMESPACE` additionally pulls in `import(... XML, gdata, Biostrings)` and `importFrom(seqinr, read.fasta, write.fasta)`. So the *effective* dependency set is `ape`, `phytools`, `parallel`, `XML`, `gdata`, `Biostrings`, `seqinr` — but `R CMD check` will flag the undeclared imports. If you touch dependencies, fix both files.
 
 ## Repository layout
 
@@ -20,24 +21,29 @@ There is no test suite, no build script, and no CI.
 
 ## Common commands
 
-Run from the repository root (the directory containing `DESCRIPTION`):
+Run from the repository root (the directory containing `DESCRIPTION`).
+
+**Preferred workflow — source functions directly** (the repo is not reliably installable as a package; see the note at the top):
 
 ```sh
-# Install locally for interactive use
-R CMD INSTALL .
-# or: Rscript -e 'devtools::install(".")'
-
-# Build a source tarball
-R CMD build .
-
-# Full package check
-R CMD check .            # add --no-tests since there are none
-
-# Load the package into an interactive session without installing
-Rscript -e 'devtools::load_all(".")'
+# Source a single function into an interactive session
+Rscript -e 'source("R/label.elements.R")'
+# In the Syst. Bot. 2016 pipeline, R/make.matrices.R source()s functions straight from GitHub.
 ```
 
-Because there are no tests, "running a single test" does not apply. Validate changes by `load_all()` and exercising the function against real data in an R session.
+The package scaffolding *does* exist, so the standard commands below may work for a subset of functions — but expect `R CMD check` to fail on the undeclared imports and other incompleteness. Use them only when you specifically need the package machinery, not for everyday development:
+
+```sh
+# Load everything into a session (often the most useful of these)
+Rscript -e 'devtools::load_all(".")'
+
+# Package machinery (may fail — see dependency note at top)
+R CMD INSTALL .          # or: Rscript -e 'devtools::install(".")'
+R CMD build .
+R CMD check .            # add --no-tests since there are none
+```
+
+Because there are no tests, "running a single test" does not apply. Validate changes by `source()`ing (or `load_all()`ing) the function and exercising it against real data in an R session.
 
 ## Architecture / big picture
 
