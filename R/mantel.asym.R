@@ -1,7 +1,7 @@
 #' Asymmetric Mantel test
 #'
 #' Performs an asymmetric Mantel test between two distance objects.
-#' The implementation is currently a placeholder.
+#' Not checked yet!!!!
 #'
 #' @param x The first distance object.
 #' @param y The second distance object.
